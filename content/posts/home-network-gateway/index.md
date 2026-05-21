@@ -1,7 +1,7 @@
 ---
 title: "The Purge (home networking edition)"
 date: 2026-05-21
-draft: true
+draft: false
 tags: ["networking", "home-network", "gl-inet", "openwrt"]
 ---
 
