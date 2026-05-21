@@ -19,7 +19,7 @@ The goal was network-wide filtering (ads, malware, tracking) and finer-grained c
 
 ## What I considered
 
-There are three vendor stories worth knowing for prosumer home networking.
+There are four vendor stories worth knowing for prosumer home networking.
 
 **TP-Link.** Cheap, reliable, fine for a basic router. The web admin panel exposes a narrow configuration surface, and anything more interesting is pushed into the smartphone-app-plus-cloud-account model I complained about above. Some models support OpenWRT, but it isn't a first-class story for the vendor.
 
@@ -64,7 +64,7 @@ GL.iNet's stock web UI is a wrapper over OpenWRT with a friendlier presentation.
 
 AdGuard's origin story is worth knowing about: it started as a Russian company and now operates out of Cyprus. That doesn't make it bad software, but it's the kind of detail you want to know when something is making DNS decisions for every device in your house. I had originally planned to use NextDNS partly for that reason, plus its nicer profile management (different filtering profiles per device, switchable remotely). What kept me on AdGuard was simply that it was already there, one click away in the firmware. Convenience won out over principle. It's fine for now, and NextDNS remains the upgrade path.
 
-It's worth noting that the DNS-as-filter ecosystem has matured a lot in the last few years. Cloudflare alone now offers multiple flavors of its 1.1.1.1 resolver tuned for different filtering profiles (family safety, malware, adult content blocking), and you can apply them at the resolver level without running anything locally. If you don't want to operate AdGuard Home yourself, that path exists and it's free.
+The DNS-as-filter ecosystem has matured a lot in the last few years. Cloudflare alone now offers multiple flavors of its 1.1.1.1 resolver tuned for different filtering profiles (family safety, malware, adult content blocking), and you can apply them at the resolver level without running anything locally. If you don't want to operate AdGuard Home yourself, that path exists and it's free.
 
 ## Configuration
 
@@ -75,12 +75,15 @@ The pattern I've settled on for any kind of per-device policy:
 
 That sounds obvious in retrospect, but it took me a beat to internalize that *everything* downstream is easier once devices have stable identities. Without that, your rules drift every time DHCP shuffles things around.
 
-With identities pinned, the interesting tooling is in AdGuard Home itself. There are several layers, increasing in specificity:
+With identities pinned, the interesting tooling is in AdGuard Home itself, which offers several layers of control.
 
-- **Per-client upstream DNS.** Each pinned client can be assigned its own upstream resolver. The kids' devices route through a stricter filtering resolver; the work laptop goes to a faster, less aggressive one.
-- **Community blocklists.** AdGuard ships with a starter pack and you can subscribe to the usual suspects: StevenBlack's hosts list, OISD, Perflyst's Smart-TV list, region-specific lists, ad-network-specific lists. These update automatically and do most of the heavy lifting.
-- **Custom domain block rules.** Anything the lists don't catch can be added by hand, either as an outright block or as a regex or wildcard rule. Useful for one-off devices that talk to weird domains nothing else does.
-- **Service-level blocks with schedules.** AdGuard has a built-in catalog of common services (Facebook, Instagram, YouTube, TikTok, Reddit, and a long tail of others). You can toggle each one on or off per client and attach a time-of-day schedule.
+The broadest is per-client upstream DNS. Each pinned client can be assigned its own upstream resolver, so the kids' devices route through a stricter filtering resolver and the work laptop goes to a faster, less aggressive one.
+
+Then there are community blocklists. AdGuard ships with a starter pack and you can subscribe to the usual suspects: StevenBlack's hosts list, OISD, Perflyst's Smart-TV list, region-specific lists, ad-network-specific lists. These update automatically and do most of the heavy lifting.
+
+Anything the lists don't catch can be added by hand as a custom domain block rule, either an outright block or a regex or wildcard match. Useful for one-off devices that talk to weird domains nothing else does.
+
+The final layer is service-level blocks with schedules. AdGuard has a built-in catalog of common services (Facebook, Instagram, YouTube, TikTok, Reddit, and a long tail of others) that you can toggle on or off per client and attach a time-of-day schedule to.
 
 The service-block scheduler is the feature I most wanted, and also the one that doesn't quite land the way I'd hoped. The UI lets you define a single blocked or unblocked window per day per client. What I actually want is a workday-only block: bypass in the morning so I can read the news over coffee, blocked through the workday, then bypass again in the evening for the unprincipled bedtime scroll. That's two on/off transitions per day, not one, and there's no clean way to express it in the current UI.
 
