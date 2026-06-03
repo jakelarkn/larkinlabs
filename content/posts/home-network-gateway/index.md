@@ -48,7 +48,7 @@ For my use case the wifi-router-versus-gateway split mattered more than any of t
 
 ## Why the gateway
 
-I have two access points wired around the house that already work well. Replacing them with a single WiFi router would have meant either reduced coverage or buying additional GL.iNet APs to maintain it. There are also mixed reports about GL.iNet's own WiFi performance: not common, but real enough that I wasn't eager to put it on the critical path of a working network.
+I have two access points wired around the house that already work well. Replacing them with a single WiFi router would have meant either reduced coverage or buying additional GL.iNet APs to maintain it. There are also mixed reports about GL.iNet's own WiFi performance: not common, but enough that I wasn't eager to spend extra money to replace well-working hardware with it.
 
 A dedicated gateway sidesteps all of that:
 
@@ -88,6 +88,12 @@ The final layer is service-level blocks with schedules. AdGuard has a built-in c
 The service-block scheduler is the feature I most wanted, and also the one that doesn't quite land the way I'd hoped. The UI lets you define a single blocked or unblocked window per day per client. What I actually want is a workday-only block: bypass in the morning so I can read the news over coffee, blocked through the workday, then bypass again in the evening for the unprincipled bedtime scroll. That's two on/off transitions per day, not one, and there's no clean way to express it in the current UI.
 
 My workaround is a manual juggle of rules and schedules. It works, but it's clumsy enough that I update it less often than I should. If AdGuard adds multi-window schedules I'll redo it properly. Until then, the rough version is in place and does most of what I wanted.
+
+## Remote access via Tailscale
+
+The Brume 3 has built-in support for Tailscale, a service that stitches your devices together into a small private network — called a "tailnet" — over the public internet. Once a device joins, it can talk to every other device in the tailnet by a stable address, regardless of which WiFi or cellular network it's actually on, with all traffic encrypted end-to-end. It's essentially a personal VPN without the usual hassle of port forwarding, dynamic DNS, or running a server.
+
+What makes the Brume 3 interesting is that it can play two roles on that tailnet. First, it can act as a gateway to your home LAN, so a laptop on hotel WiFi or a phone on cellular can reach things like a Jellyfin media server, SMB file shares, a NAS, or Home Assistant by their normal home-network IP addresses — as if you were sitting on the couch. Second, it can act as an exit node, meaning any device in the tailnet can route *all* of its internet traffic out through your home connection. That's useful for hitting geo-restricted services, getting a trusted home IP while on sketchy public WiFi, or sidestepping a hotel captive portal. For a sub-$150 travel-class router, having both subnet routing and exit-node duty in a single box is genuinely impressive — it replaces what used to require a Raspberry Pi tucked behind your TV and a weekend of fiddling.
 
 ## The Frame TV, revisited
 
