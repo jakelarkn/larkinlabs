@@ -1,5 +1,5 @@
 ---
-title: "Latency hiding"
+title: "Massive parallelism: the shape of software engineering in the agentic era"
 date: 2026-11-06
 draft: false
 tags: ["ai", "agents", "claude-code", "software-engineering"]
