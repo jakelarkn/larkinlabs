@@ -1,8 +1,10 @@
 ---
-title: "Massive parallelism: the shape of software engineering in the agentic era"
+title: "Massive parallelism"
+description: "The shape of software engineering in the agentic era"
 date: 2026-11-06
 draft: false
 tags: ["ai", "agents", "claude-code", "software-engineering"]
+aliases: ["/posts/latency-hiding/"]
 ---
 
 On a normal working day I have 50 or more agent sessions open on my laptop, and in any given half hour I'm switching between a half-dozen of them. The rest are waiting: on a reviewer, a pipeline, a merge, or an infrastructure change. Over the last week, the local software I run to feed those agents took about 300 actions without me, including 50 times it woke an inactive session to deal with something new and 30 times it completed the final stages of code review and merged.
