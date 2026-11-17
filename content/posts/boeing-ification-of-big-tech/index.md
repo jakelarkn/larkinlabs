@@ -26,7 +26,7 @@ Every tool in the kit works from what the accounting can see. RONA rewards ownin
 
 ## Boeing, briefly
 
-Harry Stonecipher, who had spent decades at GE, came to Boeing through its 1997 merger with McDonnell Douglas, the weaker of the two companies, whose executives nonetheless ended up running the combined one. He was plain about what he intended: to change the culture so that Boeing was "run like a business rather than a great engineering firm." In 2001 the headquarters moved from Seattle to Chicago, about 1,700 miles from the factories. Under Stonecipher and then Jim McNerney, another Welch alumnus, Boeing handed the design and production of most of the 787 to a network of suppliers, sold its Wichita fuselage plant in 2005, replaced the 737 by re-engining the old design rather than building a new airplane, and spent the 2010s returning its cash to shareholders. David Calhoun, the third, ran the company from 2020 to 2024.
+Harry Stonecipher, who had spent decades at GE, came to Boeing through its 1997 merger with McDonnell Douglas. He was plain about what he intended: to change the culture so that Boeing was "run like a business rather than a great engineering firm." In 2001 Boeing moved its headquarters 1,700 miles from its factories, and under Stonecipher and then Jim McNerney, another Welch alumnus, it outsourced most of the 787, sold its Wichita fuselage plant, put new engines on the aging 737 instead of designing a new airplane, and sent its cash to shareholders.
 
 The bills arrived one airplane at a time.
 
